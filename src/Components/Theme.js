@@ -27,4 +27,11 @@ export const theme = {
     highlight: "#6ea9f3",
     emoji: "🌈",
   },
+  green: {
+    value: "green",
+    text: "#60a98a",
+    background: "#c2f4b2",
+    highlight: "#405e37",
+    emoji: "💚",
+  },
 };

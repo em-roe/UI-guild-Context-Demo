@@ -4,9 +4,9 @@ import { ThemeContext } from "./Provider";
 
 const getStyles = (mode) => ({
   select: {
-    // backgroundColor: theme[mode].background,
-    // border: `2px solid ${theme[mode].highlight}`,
-    // color: theme[mode].text,
+    backgroundColor: mode.background,
+    border: `2px solid ${mode.highlight}`,
+    color: mode.text,
     borderRadius: "30px",
     padding: "0.6rem",
     paddingRight: "5px",
@@ -15,7 +15,7 @@ const getStyles = (mode) => ({
 
 const SelectTheme = () => {
   const { colorTheme, setColorTheme } = useContext(ThemeContext);
-  const styles = getStyles(theme);
+  const styles = getStyles(colorTheme);
 
   const changeTheme = (value) => {
     setColorTheme(theme[value]);
@@ -36,10 +36,6 @@ const SelectTheme = () => {
           </option>
         );
       })}
-      {/* <option value="light">light</option>
-      <option value="dark">dark</option>
-      <option value="purple">purple</option>
-      <option value="rainbow">rainbow</option> */}
     </select>
   );
 };

@@ -1,7 +1,7 @@
 import "./App.css";
-import React, { useContext } from "react";
-// import { useCurrentEmoji, useCurrentTheme } from "./Components/Provider";
-import { ThemeContext } from "./Components/Provider";
+import React from "react";
+import { useCurrentEmoji, useCurrentTheme } from "./Components/Provider";
+// import { ThemeContext } from "./Components/Provider";
 import SelectTheme from "./Components/SelectTheme";
 
 const getStyles = (colorTheme) => ({
@@ -10,7 +10,7 @@ const getStyles = (colorTheme) => ({
   },
   app: {
     textAlign: "center",
-    // margin: "0 auto",
+    margin: "0",
     height: "100%",
     width: "100%",
     padding: "30px",
@@ -25,17 +25,15 @@ const getStyles = (colorTheme) => ({
   },
 });
 const App = () => {
-  const { colorTheme } = useContext(ThemeContext);
-  //   const { colorTheme } = useCurrentTheme();
-  //   const emoji = useCurrentEmoji();
-  //   console.log(colorTheme);
+  const { colorTheme } = useCurrentTheme();
+  const emoji = useCurrentEmoji();
 
   const styles = getStyles(colorTheme);
   return (
     <div style={styles.app}>
       <h1 style={(styles.header, styles.text)}>Hello to the UI Guild 😍</h1>
       <h2 style={styles.text}>
-        Current theme is {colorTheme.emoji}
+        Current theme is {emoji}
         <span style={styles.themeText}>{colorTheme.value} </span>
         mode
       </h2>
