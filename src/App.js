@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useContext } from "react";
+import { ThemeContext } from "./Components/Provider";
+import SelectTheme from "./Components/SelectTheme";
 
-function App() {
+const getStyles = (colorTheme) => ({
+  header: {
+    fontSize: 34,
+  },
+  app: {
+    height: "100vh",
+    width: "100%",
+    padding: 16,
+    backgroundColor: colorTheme.background,
+  },
+  text: {
+    fontWeight: "400",
+    color: colorTheme.text,
+  },
+  themeText: {
+    color: colorTheme.highlight,
+  },
+});
+
+const App = () => {
+  const { colorTheme } = useContext(ThemeContext);
+  //   console.log(colorTheme);
+  const styles = getStyles(colorTheme);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={styles.app}>
+      <h1 style={(styles.header, styles.text)}>Hello to the UI Guild</h1>
+      <h2 style={styles.text}>
+        Current theme is {colorTheme.emoji}
+        <span style={styles.themeText}>{colorTheme.value} </span>
+        mode
+      </h2>
+      <SelectTheme />
     </div>
   );
-}
+};
 
 export default App;
