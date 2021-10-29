@@ -21,16 +21,25 @@ const SelectTheme = () => {
     setColorTheme(theme[value]);
   };
 
+  const options = Object.keys(theme);
+
   return (
     <select
       style={styles.select}
       value={colorTheme.value}
       onChange={(event) => changeTheme(event.target.value)}
     >
-      <option value="light">light</option>
+      {options.map((option, i) => {
+        return (
+          <option key={i + option} value={option}>
+            {option}
+          </option>
+        );
+      })}
+      {/* <option value="light">light</option>
       <option value="dark">dark</option>
       <option value="purple">purple</option>
-      <option value="rainbow">rainbow</option>
+      <option value="rainbow">rainbow</option> */}
     </select>
   );
 };
